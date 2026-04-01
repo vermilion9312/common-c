@@ -10,14 +10,14 @@
 
 void Output_turnOn(const Output* this)
 {
-	HAL_GPIO_WritePin(this->port, this->pin,
-	(this->type == OUTPUT_ACTIVE_HIGH) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+	bool type = (this->type == OUTPUT_ACTIVE_HIGH) ? GPIO_PIN_SET : GPIO_PIN_RESET;
+	HAL_GPIO_WritePin(this->port, this->pin, type);
 }
 
 void Output_turnOff(const Output* this)
 {
-	HAL_GPIO_WritePin(this->port, this->pin,
-	(this->type == OUTPUT_ACTIVE_HIGH) ? GPIO_PIN_RESET : GPIO_PIN_SET);
+	bool type = (this->type == OUTPUT_ACTIVE_HIGH) ? GPIO_PIN_RESET : GPIO_PIN_SET;
+	HAL_GPIO_WritePin(this->port, this->pin, type);
 }
 
 void Output_toggle(const Output* this)
